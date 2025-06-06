@@ -9,4 +9,6 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected title = 'todoapp';
+  welcome = 'Hello, todoapp';
+  tasks = ['Task 1', 'Task 2', 'Task 3'];
 }
