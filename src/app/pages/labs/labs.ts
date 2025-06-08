@@ -12,5 +12,12 @@ export class Labs {
   tasks = ['Task 1', 'Task 2', 'Task 3'];
 name = 'gustavo';
 age= '18';
+disabled = false;
+img='https://w3schools.com/howto/img_avatar.png';
+person ={
+  name: 'gustavo',
+  age: 18,
+  avatar: 'https://w3schools.com/howto/img_avatar.png'
+}
 
 }
