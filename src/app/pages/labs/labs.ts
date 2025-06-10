@@ -11,7 +11,7 @@ import { signal } from '@angular/core';
 })
 export class Labs {
   welcome = 'Hello, todoapp';
-  tasks = ['Task 1', 'Task 2', 'Task 3'];
+  tasks = signal(['Task 1', 'Task 2', 'Task 3']);
 name = signal('gustavo');
 age= '18';
 disabled = false;
@@ -27,7 +27,9 @@ saludar(){
   alert('hola');
 } 
 changeHandler(event: Event){
-  console.log(event);
+  const input = event.target as HTMLInputElement;
+  const newValue = input.value;
+  this.name.set(newValue);
 }
 keydownHandler(event: KeyboardEvent){
   const input = event.target as HTMLInputElement;

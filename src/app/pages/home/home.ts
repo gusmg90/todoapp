@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { signal } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -9,5 +10,5 @@ import { CommonModule } from '@angular/common';
 })
 export class Home {
   welcome = 'Hello, todoapp';
-  tasks = ['Task 1', 'Task 2', 'Task 3'];
+  tasks = signal(['Task 1', 'Task 2', 'Task 3']);
 }
