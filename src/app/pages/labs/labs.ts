@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { core } from '@angular/compiler';
+import { signal } from '@angular/core';
 
 @Component({
   selector: 'app-labs',
@@ -10,7 +12,7 @@ import { CommonModule } from '@angular/common';
 export class Labs {
   welcome = 'Hello, todoapp';
   tasks = ['Task 1', 'Task 2', 'Task 3'];
-name = 'gustavo';
+name = signal('gustavo');
 age= '18';
 disabled = false;
 img='https://w3schools.com/howto/img_avatar.png';

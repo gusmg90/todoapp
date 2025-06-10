@@ -10,7 +10,7 @@
 
 la suma de 2+2 es {{2+2}}
 
-hoal soy {{name}} y tengo {{age}}
+hoal soy {{name()}} y tengo {{age}}
 
 <img [src]="img" alt="imagen de tecnologia">
 <input [disabled]="disabled" type="text" name="nombre" >    
@@ -21,3 +21,8 @@ nombre en objeto {{person.name}}
 <button (dblclick)="saludar();" >dos click</button>
 <input type="number" [value]="person.age" (change)="changeHandler($event)"></div>
 <input [disabled]="disabled" type="text" name="nombre" (keydown)="keydownHandler($event)">    
+
+<p>
+    signals
+</p>
+
