@@ -43,7 +43,7 @@ export class Home {
 
     deleteTask(index:number)
     {
-      this.tasks.update((tasks) => tasks.filter((task,position) => position !== index));
+      this.tasks.update((tasks) => tasks.filter((tasks,position) => position !== index));
     }
 
   }
