@@ -40,5 +40,11 @@ export class Home {
       this.tasks.update((tasks) => [...this.tasks(), newTask]);
       input.value = '';
     }
+
+    deleteTask(index:number)
+    {
+      this.tasks.update((tasks) => tasks.filter((task,position) => position !== index));
+    }
+
   }
 
