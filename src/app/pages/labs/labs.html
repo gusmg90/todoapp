@@ -20,7 +20,7 @@ hoal soy {{name()}} y tengo {{age}}
 nombre en objeto {{person.name}}
 <button (click)="saludar();" >un click</button>
 <button (dblclick)="saludar();" >dos click</button>
-<input type="number" [value]="person.age" (change)="changeHandler($event)"></div>
+<input type="number" [value]="person().age" (change)="changeHandleredad($event)"></div>
 <input [disabled]="disabled" type="text" name="nombre" (keydown)="keydownHandler($event)">    
 
 <input  type="text" name="nombre" (change)="changeHandler($event)">    
@@ -29,3 +29,9 @@ nombre en objeto {{person.name}}
     signals
 </p>
 
+<div *ngIf="person().name === 'gustavo' && person().age > 18; else elseBlock">
+aqui va algo
+</div>
+<ng-template #elseBlock>
+aqui va otra cosa
+</ng-template>
