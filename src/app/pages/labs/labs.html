@@ -17,12 +17,13 @@ hoal soy {{name()}} y tengo {{age}}
 <input [disabled]="disabled" type="text" name="nombre" >    
 
 
-nombre en objeto {{person.name}}
+nombre en objeto {{person().name}}
 <button (click)="saludar();" >un click</button>
 <button (dblclick)="saludar();" >dos click</button>
 <input type="number" [value]="person().age" (change)="changeHandleredad($event)"></div>
 <input [disabled]="disabled" type="text" name="nombre" (keydown)="keydownHandler($event)">    
 
+nombre objeto persona
 <input  type="text" name="nombre" (change)="changeHandler($event)">    
 
 <p>
@@ -35,3 +36,16 @@ aqui va algo
 <ng-template #elseBlock>
 aqui va otra cosa
 </ng-template>
+
+<div [ngSwitch]="person().name">
+
+<p *ngSwitchCase="'gus'">hola, soy el gus</p>
+<p *ngSwitchCase="'andres'">hola soy el andy</p>
+<p *ngSwitchCase="'alguien'">hola soy alguien</p>
+
+</div>
+
+
+
+<input type="color" [formControl] = "colorCtrl" >
+<p>{{colorCtrl.value}}</p>
