@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { signal } from '@angular/core';
 import { Task } from './../../models/task.model';
+import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
@@ -29,16 +30,25 @@ export class Home {
      }
     ]);
 
-    changeHandler(event: Event) {
-      const input = event.target as HTMLInputElement;
+    changeHandler(){ 
+      if(this.newTaskCtl.valid){
+        const value = this.newTaskCtl.value.trim();
+        if(value !==)
+        {
+        this.addTask(value);
+        this.newTaskCtl.reset();
+        }
+      }
+    }
+
+    addTask(Title:string)
+    {
       const newTask = {
         id: Date.now(),
-        title: input.value,
+        title: Title,
         completed: false
       }
-      console.log(newTask);
-      this.tasks.update((tasks) => [...this.tasks(), newTask]);
-      input.value = '';
+      this.tasks.update((prevState) => [...prevState, newTask]);
     }
 
     deleteTask(index:number)
@@ -58,10 +68,19 @@ export class Home {
         return task;
         })
       })
-    
-    
+     
     }
-}
 
-  
+  newTaskCtl=new FormControl('',{
+  nonNullable: true,
+  validators:[
+    Validators.required,
+    Validators.minLength(3),
+    Validators.pattern('^\\S.*$'),
+  ]
+});
+
+  }
+
+
 

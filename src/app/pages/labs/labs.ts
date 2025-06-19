@@ -57,7 +57,14 @@ keydownHandler(event: KeyboardEvent){
   console.log(input.value);
 }
 
-colorCtrl = new FormControl();
+colorCtrl = new FormControl('');
+
+
+
+
+
+
+
 constructor(){
   this.colorCtrl.valueChanges.subscribe(value=> {console.log(value);
   })
