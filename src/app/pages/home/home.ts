@@ -33,7 +33,7 @@ export class Home {
     changeHandler(){ 
       if(this.newTaskCtl.valid){
         const value = this.newTaskCtl.value.trim();
-        if(value !==)
+        if(value !== '')
         {
         this.addTask(value);
         this.newTaskCtl.reset();

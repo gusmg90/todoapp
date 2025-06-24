@@ -1,3 +1,13 @@
 .container{
     padding: 3rem;
 }
+
+.error{
+    color: red;
+    padding: 1rem;
+    opacity: 0;
+}
+
+.active{
+    opacity: 1;
+}

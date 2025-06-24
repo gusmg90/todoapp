@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { core } from '@angular/compiler';
 import { signal } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 
 @Component({
@@ -36,10 +36,22 @@ changeHandleredad(event: Event){
   this.person.update(prevState => {
     return {
       ...prevState,
-      age: parseInt(newValue,10)
+      age: parseInt(newValue)
     }
   });
   //this.person().age = Number(newValue) as unknown as number; //set(newValue);
+}
+
+
+changeHandlerAge(event: Event){
+  const input = event.target as HTMLInputElement;
+  const newValue = input.value;
+  this.person.update(prevState => {
+    return {
+      ...prevState,
+      age: parseInt(newValue)
+    }
+  })
 }
 
 changeHandler(event: Event){
@@ -58,7 +70,20 @@ keydownHandler(event: KeyboardEvent){
 }
 
 colorCtrl = new FormControl('');
+tamCtrl = new FormControl(50,{
+  nonNullable: true,
+} );
 
+
+
+nameCtrl = new FormControl('',{
+  nonNullable: true,
+  validators: [
+    Validators.required, 
+    Validators.minLength(3),
+    
+  ]
+} );
 
 
 

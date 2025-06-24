@@ -49,3 +49,17 @@ aqui va otra cosa
 
 <input type="color" [formControl] = "colorCtrl" >
 <p>{{colorCtrl.value}}</p>
+
+
+
+<svg>
+    <g>
+      <rect x="0" y="0" [style.width.px]="tamCtrl.value" height="100" [attr.fill]="colorCtrl.value" />
+    </g>
+</svg>
+
+<input type="number" [formControl] = "tamCtrl" >
+<p>
+<input type="text" [formControl] = "nameCtrl" >
+<span class ="error" [class.active] *ngIf="nameCtrl.invalid && nameCtrl.touched">Nombre Invalido</span>
+</p>
