@@ -96,4 +96,13 @@ constructor(){
 }
 
 
+nameCtrl2 = new FormControl('',{
+  nonNullable: true,
+  validators: [
+    Validators.required, 
+    Validators.minLength(3),
+    
+  ]
+} );
+
 }

@@ -361,4 +361,9 @@
     .filters {
       bottom: 10px;
     }
+
+    .complete {
+      color: gray !important;
+      text-decoration: line-through !important;
+    }
   }

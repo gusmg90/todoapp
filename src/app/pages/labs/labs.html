@@ -60,6 +60,9 @@ aqui va otra cosa
 
 <input type="number" [formControl] = "tamCtrl" >
 <p>
-<input type="text" [formControl] = "nameCtrl" >
-<span class ="error" [class.active] *ngIf="nameCtrl.invalid && nameCtrl.touched">Nombre Invalido</span>
+<!-- <input type="text" [formControl] = "nameCtrl">
+<span class ="error"  *ngIf="nameCtrl.invalid && nameCtrl.touched">Nombre Invalido</span> -->
+
+<input type="text" [formControl] = "nameCtrl2">
+<span class ="claseerror"  [class.activo]="nameCtrl2.invalid && nameCtrl2.touched">Nombre Invalido</span>
 </p>

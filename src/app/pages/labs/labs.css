@@ -2,12 +2,13 @@
     padding: 3rem;
 }
 
-.error{
+.claseerror{
     color: red;
     padding: 1rem;
     opacity: 0;
+    transition: all 0.5s;
 }
 
-.active{
+.claseerror.activo{
     opacity: 1;
 }

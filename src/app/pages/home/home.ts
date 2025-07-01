@@ -70,7 +70,8 @@ export class Home {
       })
      
     }
-
+  completed = new FormControl();
+  
   newTaskCtl=new FormControl('',{
   nonNullable: true,
   validators:[
@@ -79,6 +80,8 @@ export class Home {
     Validators.pattern('^\\S.*$'),
   ]
 });
+
+
 
   }
 
