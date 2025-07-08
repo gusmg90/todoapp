@@ -16,17 +16,20 @@ export class Home {
     {
       id: Date.now(),
       title: 'Task 1',
-      completed: false 
+      completed: false, 
+      editing: false
     },
     {
       id: Date.now(),
       title: 'Task 2',
-      completed: false 
+      completed: false,
+       editing: false 
     },
     {
       id: Date.now(),
       title: 'Task 3',
-      completed: false  
+      completed: false,
+       editing: false  
      }
     ]);
 
@@ -81,7 +84,36 @@ export class Home {
   ]
 });
 
+updateTastkEditingMode(index:number){
+  this.tasks.update((prevState) => {
+    return prevState.map((task, position) => {
+      if (position === index) {
+      return {
+        ...task,
+        editing: !task.editing
+      }
+    }
+    return {...task,
+    editing:false
+    }  
+  })
+  })
+}
 
+updateTastkText(index:number, event: Event){
+  this.tasks.update((prevState) => {
+    return prevState.map((task, position) => {
+      if (position === index) {
+      return {
+        ...task,
+        title : (event.target as HTMLInputElement).value,
+        editing: !task.editing
+      }
+    }
+    return task
+  })
+  })
+}
 
   }
 
