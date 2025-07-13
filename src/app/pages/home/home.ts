@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { signal } from '@angular/core';
+import { signal, computed, effect } from '@angular/core';
 import { Task } from './../../models/task.model';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 
@@ -12,25 +12,10 @@ import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 })
 export class Home {
   welcome = 'Hello, todoapp';
+  
+  
   tasks = signal<Task[]>([
-    {
-      id: Date.now(),
-      title: 'Task 1',
-      completed: false, 
-      editing: false
-    },
-    {
-      id: Date.now(),
-      title: 'Task 2',
-      completed: false,
-       editing: false 
-    },
-    {
-      id: Date.now(),
-      title: 'Task 3',
-      completed: false,
-       editing: false  
-     }
+   
     ]);
 
     changeHandler(){ 
@@ -54,9 +39,9 @@ export class Home {
       this.tasks.update((prevState) => [...prevState, newTask]);
     }
 
-    deleteTask(index:number)
+    deleteTask(id:number)
     {
-      this.tasks.update((tasks) => tasks.filter((tasks,position) => position !== index));
+      this.tasks.update((tasks) => tasks.filter((tasks) => tasks.id !== id));
     }
 
     updateTask(index:number){
@@ -115,7 +100,52 @@ updateTastkText(index:number, event: Event){
   })
 }
 
+
+
+filter = signal('all');
+changeFilter(filter: string ){
+  this.filter.set(filter);
+}
+
+tasksByFilter= computed(() => {
+const filter = this.filter();
+const tasks = this.tasks();
+if(filter === 'pending'){
+  return tasks.filter(tasks => !tasks.completed);
+
+} if(filter === 'completed'){
+  return tasks.filter(tasks => tasks.completed);
+}
+return tasks;
+
+})
+
+
+constructor(){
+  effect (() => {
+    const tasks = this.tasks();
+    console.log(tasks);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  })
   }
+
+trackTasks(){ // para trackear si ya hizo la validacion de datos en storage
+  return this.tasks;
+
+}
+
+  NgOnInit(){
+    const storage = localStorage.getItem('tasks');
+    if(storage){
+      const tasks = JSON.parse(storage);
+      this.tasks.set(tasks);
+    }
+  }
+
+
+
+
+}
 
 
 
