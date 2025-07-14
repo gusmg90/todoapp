@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, Injector } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { signal, computed, effect } from '@angular/core';
 import { Task } from './../../models/task.model';
@@ -120,29 +120,41 @@ return tasks;
 
 })
 
+injector =  inject(Injector);
+// constructor(){
+//   effect (() => {
+//     const tasks = this.tasks();
+//     console.log(tasks);
+//     localStorage.setItem('tasks', JSON.stringify(tasks));
+//   },{injector: this.injector})
+//   }
 
-constructor(){
-  effect (() => {
-    const tasks = this.tasks();
-    console.log(tasks);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  })
-  }
 
-trackTasks(){ // para trackear si ya hizo la validacion de datos en storage
-  return this.tasks;
 
-}
-
-  NgOnInit(){
+/*************  ✨ Windsurf Command ⭐  *************/
+  /**
+   * Initialize the component by retrieving the tasks from local storage
+   * and setting them on the tasks signal. Also, start tracking any changes
+   * to the tasks signal so that it gets persisted to local storage.
+   */
+/*******  478d9d66-25a7-4376-bdae-53c12c97998a  *******/
+  ngOnInit(){
     const storage = localStorage.getItem('tasks');
     if(storage){
       const tasks = JSON.parse(storage);
       this.tasks.set(tasks);
     }
+    this.trackTasks();
   }
 
+trackTasks(){ // para trackear si ya hizo la validacion de datos en storage
+   effect (() => {
+    const tasks = this.tasks();
+    console.log(tasks);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, {injector: this.injector})
 
+}
 
 
 }
