@@ -128,16 +128,6 @@ injector =  inject(Injector);
 //     localStorage.setItem('tasks', JSON.stringify(tasks));
 //   },{injector: this.injector})
 //   }
-
-
-
-/*************  ✨ Windsurf Command ⭐  *************/
-  /**
-   * Initialize the component by retrieving the tasks from local storage
-   * and setting them on the tasks signal. Also, start tracking any changes
-   * to the tasks signal so that it gets persisted to local storage.
-   */
-/*******  478d9d66-25a7-4376-bdae-53c12c97998a  *******/
   ngOnInit(){
     const storage = localStorage.getItem('tasks');
     if(storage){
