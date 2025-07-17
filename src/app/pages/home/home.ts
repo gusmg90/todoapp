@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { signal, computed, effect } from '@angular/core';
 import { Task } from './../../models/task.model';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
+import { initializeApp } from "firebase/app";
 
 @Component({
   selector: 'app-home',

@@ -33,6 +33,14 @@ nombre objeto persona
 <div *ngIf="person().name === 'gustavo' && person().age > 18; else elseBlock">
 aqui va algo
 </div>
+
+@if(person().name === 'gustavo' && person().age > 18;){
+<div>
+aqui va algo con sintaxis declarativa
+
+</div>
+}
+
 <ng-template #elseBlock>
 aqui va otra cosa
 </ng-template>
