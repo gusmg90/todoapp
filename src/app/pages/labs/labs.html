@@ -1,91 +1,99 @@
 <div class="container">
 
   FOR CON LA NUEVA sintaxis
-<ul>
-@for(task of tasks(); track task; let i=$index)
-{
-<li>{{i}} {{task}}</li>
-}@empty {
-<li>no hay tareas</li>
-}
-</ul>
---------------------------------------
+  <ul>
+    @for(task of tasks(); track task; let i=$index)
+      {
+      <li>{{i}} {{task}}</li>
+      }@empty {
+      <li>no hay tareas</li>
+    }
+  </ul>
+  --------------------------------------
 
-switch con la nueva sintaxis
+  switch con la nueva sintaxis
 
-@switch (person().name) {
-  @case('gustavo'){
-    <p>hola soy gustavo</p>
-    
-  }
+  @switch (person().name) {
+    @case('gustavo'){
+      <p>hola soy gustavo</p>
+
+    }
     @case('ana'){
-    <p>hola soy any</p>
+      <p>hola soy any</p>
+    }
+    @default {
+      <p>hola soy alguien</p>
+    }
   }
-  @default {
-    <p>hola soy alguien</p>
-  }
-}
 
 
 
 
 
 
-<ul>
-<li *ngFor="let task of tasks(); index as i">
-{{i}} {{task}}
-</li>
-</ul>
-total: {{tasks().length}}
+  <ul>
+    @for (task of tasks(); track task; let i = $index) {
+      <li>
+        {{i}} {{task}}
+      </li>
+    }
+  </ul>
+  total: {{tasks().length}}
 
-{{'hola'.repeat(4)}}
+  {{'hola'.repeat(4)}}
 
-la suma de 2+2 es {{2+2}}
+  la suma de 2+2 es {{2+2}}
 
-hoal soy {{person().name}} y tengo {{age}}
+  hoal soy {{person().name}} y tengo {{age}}
 
-<img [src]="img" alt="imagen de tecnologia">
-<input [disabled]="disabled" type="text" name="nombre" >    
+  <img [src]="img" alt="imagen de tecnologia">
+  <input [disabled]="disabled" type="text" name="nombre" >
 
 
-nombre en objeto {{person().name}}
-<button (click)="saludar();" >un click</button>
-<button (dblclick)="saludar();" >dos click</button>
-<input type="number" [value]="person().age" (change)="changeHandleredad($event)"></div>
-<input [disabled]="disabled" type="text" name="nombre" (keydown)="keydownHandler($event)">    
+  nombre en objeto {{person().name}}
+  <button (click)="saludar();" >un click</button>
+  <button (dblclick)="saludar();" >dos click</button>
+  <input type="number" [value]="person().age" (change)="changeHandleredad($event)"></div>
+  <input [disabled]="disabled" type="text" name="nombre" (keydown)="keydownHandler($event)">
 
-nombre objeto persona
-<input  type="text" name="nombre" (change)="changeHandler($event)">    
+  nombre objeto persona
+  <input  type="text" name="nombre" (change)="changeHandler($event)">
 
-<p>
+  <p>
     signals
-</p>
+  </p>
 
-<!-- <div *ngIf="person().name === 'gustavo' && person().age > 18; else elseBlock"> -->
-aqui va algo
+  <!-- <div *ngIf="person().name === 'gustavo' && person().age > 18; else elseBlock"> -->
+  aqui va algo
 <!-- </div> -->
 
 @if(person().name === 'gustavo' && person().age > 18;){
-<div>
-aqui va algo con sintaxis declarativa
+  <div>
+    aqui va algo con sintaxis declarativa
 
-</div>
-}@else{
-<div>
-aqui va otra cosa
-</div>
+  </div>
+  }@else{
+  <div>
+    aqui va otra cosa
+  </div>
 }
 
 <!-- <ng-template #elseBlock>
 aqui va otra cosa
 </ng-template> -->
 
-<div [ngSwitch]="person().name">
-
-<p *ngSwitchCase="'gus'">hola, soy el gus</p>
-<p *ngSwitchCase="'andres'">hola soy el andy</p>
-<p *ngSwitchCase="'alguien'">hola soy alguien</p>
-
+<div>
+  @switch (person().name) {
+    @case ('gus') {
+      <p>hola, soy el gus</p>
+    }
+    @case ('andres') {
+      <p>hola soy el andy</p>
+    }
+    @case ('alguien') {
+      <p>hola soy alguien</p>
+    }
+  }
 </div>
 
 
@@ -96,16 +104,16 @@ aqui va otra cosa
 
 
 <svg>
-    <g>
-      <rect x="0" y="0" [style.width.px]="tamCtrl.value" height="100" [attr.fill]="colorCtrl.value" />
-    </g>
+  <g>
+    <rect x="0" y="0" [style.width.px]="tamCtrl.value" height="100" [attr.fill]="colorCtrl.value" />
+  </g>
 </svg>
 
 <input type="number" [formControl] = "tamCtrl" >
 <p>
-<!-- <input type="text" [formControl] = "nameCtrl">
-<span class ="error"  *ngIf="nameCtrl.invalid && nameCtrl.touched">Nombre Invalido</span> -->
+  <!-- <input type="text" [formControl] = "nameCtrl">
+  <span class ="error"  *ngIf="nameCtrl.invalid && nameCtrl.touched">Nombre Invalido</span> -->
 
-<input type="text" [formControl] = "nameCtrl2">
-<span class ="claseerror"  [class.activo]="nameCtrl2.invalid && nameCtrl2.touched">Nombre Invalido</span>
+  <input type="text" [formControl] = "nameCtrl2">
+  <span class ="claseerror"  [class.activo]="nameCtrl2.invalid && nameCtrl2.touched">Nombre Invalido</span>
 </p>
